@@ -1,0 +1,279 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+}
+:root{
+    /* Primary */
+    --bright-blue: hsl(220, 98%, 61%);
+    --check-background: linear-gradient(135deg,hsl(192, 100%, 67%) 0%, hsl(280, 87%, 65%) 80%, hsl(280, 87%, 65%) 100%);
+    /* Light theme */
+    --very-light-gray: hsl(0, 0%, 98%);
+    --very-light-grayish-blue: hsl(236, 33%, 92%);
+    --light-grayish-blue-lt: hsl(233, 11%, 84%);
+    --dark-grayish-blue-lt: hsl(236, 9%, 61%);
+    --very-dark-grayish-blue-lt: hsl(235, 19%, 35%);
+    --box-shadow-lt: rgb(163, 163, 163);
+    --icon-lt: url(../images/icon-moon.svg);
+    /* Dark theme */
+    --very-dark-blue: hsl(235, 21%, 11%);
+    --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+    --light-grayish-blue-dt: hsl(234, 39%, 85%);
+    --light-grayish-blue-dt /*hover*/: hsl(236, 33%, 92%);
+    --dark-grayish-blue: hsl(234, 11%, 52%);
+    --very-dark-grayish-blue-one: hsl(233, 14%, 35%);
+    --very-dark-grayish-blue-two: hsl(237, 14%, 26%);
+    --box-shadow-dt: #000;
+    --icon-dt: url(/images/icon-sun.svg);
+}
+/* general */
+body{
+    background-color: var(--very-light-grayish-blue);
+    background-image: url(../images/bg-mobile-light.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    object-fit: contain;
+    width: 100vw;
+    height: auto;
+}
+.main{
+    width: 90%;
+    max-width: 480px;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.btn-desktop{
+    display: block;
+}
+.hidden{
+    display: none;
+}
+.visible{
+    display: block;
+}
+/* header */
+header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 50px 0 25px 0;
+}
+h1{
+    font-size: 30px;
+    letter-spacing: 0.3em;
+    color: #fff;
+}
+.icon-header{
+    width: 30px;
+    height: 30px;
+    background-image: var(--icon-lt);
+    background-repeat: no-repeat;
+}
+/* To do list */
+section{
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+}
+.new-to-do{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--very-light-gray);
+    border-radius: 0.4em;
+}
+.btnAdd{
+    width: 25px;
+    height: 20px;
+    border: 1px solid var(--light-grayish-blue-lt);
+    border-radius: 50%;
+    margin-right: 0.5em;
+}
+.new-to-do-input{
+    border: none;
+    outline: none;
+    background-color: var(--very-light-gray);
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--very-dark-grayish-blue-lt);
+    width: 100%;
+    padding: 10px 5px;
+}
+.list{
+    background-color: var(--very-light-gray);
+    margin-top: 1em;
+    width: 100%;
+    height: auto;
+    border-radius: 0.4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 10px 30px -8px var(--box-shadow-lt);
+}
+.to-do {
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid var(--light-grayish-blue-lt);
+    align-items: center;
+    flex-grow: 2;
+}
+.to-do > p:hover, .radio-list:hover{
+    cursor: pointer;
+}
+.to-do > p {
+    flex-grow: 2;
+    font-size: 12px;
+    color: var(--very-dark-grayish-blue-lt);
+    font-weight: 400;
+    padding: 0 10px 0 10px;
+}
+.radio-list{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--light-grayish-blue-lt);
+    border-radius: 50%;
+    background: transparent;
+}
+.radio-list:hover{
+    background: var(--check-background);
+}
+.radio-list-img{
+    display: block;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: var(--very-light-gray);
+}
+.deleteBtn{
+    width: 15px;
+    height: 15px;
+}
+.list-info{
+    width: 100%;
+    height: auto;
+    display: flex;
+    background-color: var(--very-light-gray);
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dark-grayish-blue-lt);
+}
+.list-info > p{
+    font-size: 12px;
+}
+.list-info span{
+    font-size: 12px;
+}
+.list-info > span:hover{
+    cursor: pointer;
+    color: var(--very-dark-grayish-blue-lt);
+}
+.btn-mobile{
+    width: 100%;
+    margin-top: 1em;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--very-light-gray);
+    border-radius: 0.4em;
+}
+.btn-mobile > label {
+    padding: 0 8px;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--very-dark-grayish-blue-lt);
+}
+.btn-mobile > label:hover{
+    font-weight: 700;
+    cursor: pointer;
+}
+.btn-mobile > input:checked + label{
+    color: var(--bright-blue);
+}
+.message{
+    margin-top: 2.5em;
+    font-weight: 400;
+    color: var(--dark-grayish-blue-lt);
+}
+.message > span{
+    font-size: 15px;
+}
+
+.is-light-theme{
+    --very-light-gray: hsl(0, 0%, 98%);
+    --very-light-grayish-blue: hsl(236, 33%, 92%);
+    --light-grayish-blue-lt: hsl(233, 11%, 84%);
+    --dark-grayish-blue-lt: hsl(236, 9%, 61%);
+    --very-dark-grayish-blue-lt: hsl(235, 19%, 35%); 
+}
+.is-dark-theme{
+    --very-light-gray: var(--very-dark-desaturated-blue);
+    --very-light-grayish-blue: var(--very-dark-blue);
+    --light-grayish-blue-lt: var(--dark-grayish-blue);
+    --dark-grayish-blue-lt: var(--very-dark-grayish-blue-one);
+    --very-dark-grayish-blue-lt: var(--light-grayish-blue-dt);
+    --box-shadow-lt: var(--box-shadow-dt);
+    --icon-lt: var(--icon-dt);
+}
+
+@media screen and (min-width: 480px){
+    body{
+        background-image: url(../images/bg-desktop-light.jpg);
+        background-size: auto;
+        object-fit: none;
+    }
+    .btn-mobile{
+        display: none;
+    }
+    .btn-desktop{
+        display: flex;
+        width: 50%;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .btn-desktop > label{
+        font-size: 12px;   
+    }
+    .btn-desktop > label:hover{
+        color: var(--very-dark-grayish-blue-lt);
+        cursor: pointer;
+    }
+    .btn-desktop > input:checked + label{
+        color: var(--bright-blue);
+    }
+}
+@media screen and (min-width: 1440px){
+    body{
+        background-size: contain;
+        padding-top: 2%;
+    }
+}
+@media screen and (min-width: 1600px){
+    body{
+        padding-top: 3%;
+    }
+    .main{
+        max-width: 550px;
+    }
+}
+@media screen and (min-width: 1900px){
+    body{
+        padding-top: 6%;
+    }
+    .main{
+        max-width: 650px;
+    }
+}

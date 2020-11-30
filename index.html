@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Frontend Mentor | Todo app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body class="is-light-theme">
+  <div class="main">
+    <header class="header">
+      <h1>TODO</h1>
+      <span class="icon-header"></span>
+    </header>
+    <section class="todo-list">
+      <div class="new-to-do">
+        <span class="btnAdd"></span>
+        <input class="new-to-do-input" type="text" aria-label="add new to do" placeholder="Create a new todo..">
+      </div>
+      <div class="list">
+        <span class="to-do">
+          <div class="radio-list">
+            <span class="radio-list-img">
+              <img class="hidden" src="/images/icon-check.svg" alt="checked">
+            </span>
+          </div>
+          <p>10 minutes meditation</p>
+          <img class="deleteBtn" src="/images/icon-cross.svg" alt="delete">
+        </span>
+        <div class="list-info">
+          <p><span>0</span> items left</p>
+          <div class=" hidden btn-desktop">
+            <input id="#allInput" class="hidden" type="checkbox" aria-label="all" checked>
+            <label for="#allInput">All</label>
+            <input id="#activeInput" class="hidden" type="checkbox" aria-label="active">
+            <label for="#activeInput">Active</label>
+            <input id="#completedInput" class="hidden" type="checkbox" aria-label="completed">
+            <label for="#completedInput">Completed</label>
+          </div>
+          <span>Clear Completed</span>
+        </div>
+      </div>
+      <div class="btn-mobile">
+        <input id="#allInputMobile" class="hidden" type="checkbox" aria-label="all" checked>
+        <label for="#allInputMobile">All</label>
+        <input id="#activeInputMobile" class="hidden" type="checkbox" aria-label="active">
+        <label for="#activeInputMobile">Active</label>
+        <input id="#completedInputMobile" class="hidden" type="checkbox" aria-label="completed">
+        <label for="#completedInputMobile">Completed</label>
+      </div>
+    </section>
+    <div class="message">
+    <span>Drag and drop to reorder list</span>
+    </div>
+  </div>
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+</html>
