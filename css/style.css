@@ -17,6 +17,8 @@
     --very-dark-grayish-blue-lt: hsl(235, 19%, 35%);
     --box-shadow-lt: rgb(163, 163, 163);
     --icon-lt: url(../images/icon-moon.svg);
+    --bg-mb-lt: url(../images/bg-mobile-light.jpg);
+    --bg-dk-lt: url(../images/bg-desktop-light.jpg);
     /* Dark theme */
     --very-dark-blue: hsl(235, 21%, 11%);
     --very-dark-desaturated-blue: hsl(235, 24%, 19%);
@@ -27,11 +29,13 @@
     --very-dark-grayish-blue-two: hsl(237, 14%, 26%);
     --box-shadow-dt: #000;
     --icon-dt: url(/images/icon-sun.svg);
+    --bg-mb-dt: url(../images/bg-mobile-dark.jpg);
+    --bg-dk-dt: url(../images/bg-desktop-dark.jpg);
 }
 /* general */
 body{
     background-color: var(--very-light-grayish-blue);
-    background-image: url(../images/bg-mobile-light.jpg);
+    background-image: var(--bg-mb-lt);
     background-repeat: no-repeat;
     background-size: contain;
     object-fit: contain;
@@ -71,9 +75,12 @@ h1{
 .icon-header{
     width: 30px;
     height: 30px;
+    transform: rotate3d(0,1,0,0deg);
     background-image: var(--icon-lt);
+    transition: 0.7s;
     background-repeat: no-repeat;
 }
+
 /* To do list */
 section{
     display: flex;
@@ -87,6 +94,7 @@ section{
     justify-content: center;
     align-items: center;
     padding: 10px 15px;
+    margin-bottom: 1em;
     background-color: var(--very-light-gray);
     border-radius: 0.4em;
 }
@@ -108,7 +116,6 @@ section{
     padding: 10px 5px;
 }
 .list{
-    background-color: var(--very-light-gray);
     margin-top: 1em;
     width: 100%;
     height: auto;
@@ -118,10 +125,17 @@ section{
     align-items: center;
     box-shadow: 0px 10px 30px -8px var(--box-shadow-lt);
 }
+.list-add{
+    width: 100%;
+}
+.list-sortable{
+    width: 100%;
+}
 .to-do {
     display: flex;
     width: 100%;
     padding: 15px;
+    background-color: var(--very-light-gray);
     border-bottom: 1px solid var(--light-grayish-blue-lt);
     align-items: center;
     flex-grow: 2;
@@ -144,21 +158,27 @@ section{
     align-items: center;
     border: 1px solid var(--light-grayish-blue-lt);
     border-radius: 50%;
-    background: transparent;
+}
+.gradient-background{
+    background: url(../images/icon-check.svg) no-repeat center, var(--check-background);
 }
 .radio-list:hover{
-    background: var(--check-background);
+    background: url(../images/icon-check.svg) no-repeat center, var(--check-background);
 }
 .radio-list-img{
-    display: block;
-    width: 17px;
-    height: 17px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: var(--very-light-gray);
+}
+.strike-paraph{
+    text-decoration: line-through;
+    --very-dark-grayish-blue-lt: var(--dark-grayish-blue-lt);
 }
 .deleteBtn{
     width: 15px;
     height: 15px;
+    cursor: pointer;
 }
 .list-info{
     width: 100%;
@@ -194,7 +214,7 @@ section{
     padding: 0 8px;
     font-weight: 400;
     font-size: 16px;
-    color: var(--very-dark-grayish-blue-lt);
+    color: var(--dark-grayish-blue-lt);
 }
 .btn-mobile > label:hover{
     font-weight: 700;
@@ -211,28 +231,29 @@ section{
 .message > span{
     font-size: 15px;
 }
-
-.is-light-theme{
-    --very-light-gray: hsl(0, 0%, 98%);
-    --very-light-grayish-blue: hsl(236, 33%, 92%);
-    --light-grayish-blue-lt: hsl(233, 11%, 84%);
-    --dark-grayish-blue-lt: hsl(236, 9%, 61%);
-    --very-dark-grayish-blue-lt: hsl(235, 19%, 35%); 
+.attribution{
+    color: var(--very-dark-grayish-blue-lt);
 }
+/* Dark theme */
 .is-dark-theme{
     --very-light-gray: var(--very-dark-desaturated-blue);
     --very-light-grayish-blue: var(--very-dark-blue);
-    --light-grayish-blue-lt: var(--dark-grayish-blue);
+    --light-grayish-blue-lt: var(--very-dark-grayish-blue-one);
     --dark-grayish-blue-lt: var(--very-dark-grayish-blue-one);
     --very-dark-grayish-blue-lt: var(--light-grayish-blue-dt);
     --box-shadow-lt: var(--box-shadow-dt);
+    --bg-mb-lt: var(--bg-mb-dt);
+    --bg-dk-lt: var(--bg-dk-dt);
+}
+.theme-animation{
     --icon-lt: var(--icon-dt);
+    transition: 0.7s;
 }
 
 @media screen and (min-width: 480px){
     body{
-        background-image: url(../images/bg-desktop-light.jpg);
-        background-size: auto;
+        background-image: var(--bg-dk-lt);
+        background-size: contain;
         object-fit: none;
     }
     .btn-mobile{
