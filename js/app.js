@@ -6,12 +6,29 @@ const listSortable = document.querySelector('.list-sortable');
 const themeBtn = document.querySelector('.icon-header');
 const listInfo = document.querySelector('.list-info');
 const counterList = document.querySelector('.counter-list');
+
+// Variables for mobile and desktop
+const allInputMobile = document.getElementById('#allInputMobile');
+const activeInputMobile = document.getElementById('#activeInputMobile');
+const completedInputMobile = document.getElementById('#completedInputMobile');
+const allInput = document.getElementById('#allInput');
+const activeInput = document.getElementById('#activeInput');
+const completedInput = document.getElementById('#completedInput');
+
 listArray = [];
 
 // Events
 document.addEventListener('DOMContentLoaded', () => {
     themeBtn.addEventListener('click', changeTheme);
     newTodoInput.addEventListener('keypress', validateInput);
+
+    // Event for filters
+    allInputMobile.addEventListener('click', filterAll);
+    activeInputMobile.addEventListener('click', filterActive);
+    completedInputMobile.addEventListener('click', filterCompleted);
+    allInput.addEventListener('click', filterAll);
+    activeInput.addEventListener('click', filterActive);
+    completedInput.addEventListener('click', filterCompleted);
 
     // Create drag and drop
     Sortable.create(listSortable, {
@@ -60,7 +77,7 @@ function creatingHTML(dataInput){
     listArray = [...listArray, spanTodoDiv];
     
     // Print to DOM
-    printHTML();
+    printHTML(listArray);
 
     // Checked, delete and more..
     if(listArray.length){
@@ -69,9 +86,9 @@ function creatingHTML(dataInput){
     }
 };
 
-function printHTML(){
-    listArray.forEach(list => listSortable.appendChild(list));
-    updateCounter();
+function printHTML(arrList){
+    arrList.forEach(list => listSortable.appendChild(list));
+    updateCounter(listArray);
 };
 
 function checkRadio(spanDiv) {
@@ -116,14 +133,14 @@ function deleteList(){
             elementId = e.target.getAttribute('data-id');
             listArray = listArray.filter(list => list.getAttribute('data-id') !== elementId);
             clearHTML();
-            printHTML();
-            updateCounter();
+            printHTML(listArray);
+            updateCounter(listArray);
         });
     })
 }
 
-function updateCounter(){
-    counterList.textContent = listArray.length;
+function updateCounter(arrList){
+    counterList.textContent = arrList.length;
 }
 
 function clearCompleted(){
@@ -139,11 +156,55 @@ function clearCompleted(){
                 listArray = listArray.filter(list => list.getAttribute('data-id') !== completedId);
             });
             clearHTML();
-            printHTML();
-            updateCounter();
+            printHTML(listArray);
+            updateCounter(listArray);
         }
     })
 }
+
+// Functions of filter
+function filterAll(e){
+    let attributeInput = e.target.getAttribute('checked');
+    if (attributeInput !== null){
+        e.target.removeAttribute('checked');
+    } else {
+        e.target.setAttribute('checked', '');
+        clearHTML();
+        printHTML(listArray);
+        updateCounter(listArray);
+    }
+}
+function filterActive(e){
+    let attributeInput = e.target.getAttribute('checked');
+    if (attributeInput !== null){
+        e.target.removeAttribute('checked');
+    } else {
+        e.target.setAttribute('checked', '');
+        let listArrayActive = [];
+        listArrayActive = listArray.filter(list => !list.children[0].classList.contains('gradient-background'));
+        clearHTML();
+        printHTML(listArrayActive);
+        updateCounter(listArrayActive);
+    }
+}
+function filterCompleted(e){
+    let attributeInput = e.target.getAttribute('checked');
+    if (attributeInput !== null){
+        e.target.removeAttribute('checked');
+    } else {
+        e.target.setAttribute('checked', '');
+        let listArrayCompleted = [];
+        listArray.forEach(list => {
+            if((list.children[0].classList.contains('gradient-background'))){
+                listArrayCompleted = [...listArrayCompleted, list];
+            }
+        })
+        clearHTML();
+        printHTML(listArrayCompleted);
+        updateCounter(listArrayCompleted);
+    }
+}
+
 
 function clearHTML() {
     while (listSortable.firstChild) {
